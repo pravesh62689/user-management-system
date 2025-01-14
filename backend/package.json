@@ -1,29 +1,32 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-     "start:dev": "nodemon src/index.ts"
+    "start": "node dist/server.js",
+    "start:dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "prestart": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.10.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.3",
     "uuid": "^11.0.5"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.6",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.1",
     "eslint": "^9.18.0",
     "nodemon": "^3.1.9",
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
   }
 }
