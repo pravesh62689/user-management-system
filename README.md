@@ -112,6 +112,12 @@ backend/
 
 ---
 
+![Screenshot 2025-01-16 221119](https://github.com/user-attachments/assets/4806d8d6-f1eb-487f-809c-feaec430d03d)
+![Screenshot 2025-01-16 221101](https://github.com/user-attachments/assets/fe56f477-1ee4-4ed3-ac6b-7e80a234bb2a)
+![Screenshot 2025-01-16 221257](https://github.com/user-attachments/assets/70f05c6a-10cc-4670-af1a-a37df3bd3ab8)
+![Screenshot 2025-01-16 221212](https://github.com/user-attachments/assets/15a259a1-290e-4861-8868-dab6e365bb67)
+
+
 ## Usage
 
 1. Start the backend and frontend servers as mentioned above.
