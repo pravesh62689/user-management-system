@@ -1,42 +1,106 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.app-main {
+  display: flex;
+  flex-grow: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+.app-sidebar {
+  flex: 1;
+  max-width: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.app-content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.visualization-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.visualization-container h2 {
+  margin: 0;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h2, h3 {
+  color: #333;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul.hobby-list {
+  list-style: none;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+li.hobby-item {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  cursor: grab;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.card {
-  padding: 2em;
+li.hobby-item:hover {
+  background-color: #c8e6c9;
 }
 
-.read-the-docs {
-  color: #888;
+.drop-area {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  color: #777;
+}
+
+.drop-area:hover {
+  background-color: #e8f5e9;
+  color: #555;
 }

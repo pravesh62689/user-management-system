@@ -1,52 +1,53 @@
-import { Request, Response,RequestHandler } from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import { Request, Response } from "express";
+import User from "../models/userModel";
 
-
-const users: { id: string; username: string; age: number; hobbies: string[] }[] = [];
-
-export const getAllUsers = (req: Request, res: Response) => {
+export const getUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await User.find();
     res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
 };
 
-export const createUser = (req: Request, res: Response) => {
+export const createUser  = async (req: Request, res: Response) => {
+  try {
     const { username, age, hobbies } = req.body;
-    const id = uuidv4();
-    const newUser = { id, username, age, hobbies };
-    users.push(newUser);
-    res.status(201).json({ message: 'User created', user: newUser });
+    const newUser  = new User({ username, age, hobbies });
+    await newUser .save();
+    res.status(201).json(newUser );
+  } catch (error) {
+    res.status(400).json({ message: "Bad request" });
+  }
 };
 
-export const updateUser: RequestHandler = async (req, res) => {
-    const { userId } = req.params;
-    const { username, age, hobbies } = req.body;
-
-      const user = users.find(u => u.id === userId.trim());
-
-    if (!user) {
-        res.status(404).json({ message: 'User not found' });
-        return;
+export const updateUser  = async (req: Request, res: Response) => {
+  const { userId } = req.params;
+  const { username, age, hobbies } = req.body;
+  try {
+    const updatedUser  = await User.findByIdAndUpdate(
+      userId,
+      { username, age, hobbies },
+      { new: true }
+    );
+    if (!updatedUser ) {
+      return res.status(404).json({ message: "User  not found" });
     }
-
-    if (username) user.username = username;
-    if (age) user.age = age;
-    if (hobbies) user.hobbies = hobbies;
-
-    res.status(200).json({ message: 'User updated', user });
-    return;
+    res.status(200).json(updatedUser );
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
 };
 
-
-export const deleteUser: RequestHandler = (req: Request, res: Response) => {
-    const { userId } = req.params;
-
-       const userIndex = users.findIndex(u => u.id === userId.trim());
-
-    if (userIndex === -1) {
-        res.status(404).json({ message: 'User not found' });
-        return;
+export const deleteUser  = async (req: Request, res: Response) => {
+  const  { userId } = req.params;
+  try {
+    const deletedUser   = await User.findByIdAndDelete(userId);
+    if (!deletedUser  ) {
+      return res.status(404).json({ message: "User   not found" });
     }
-
-    users.splice(userIndex, 1);
-
     res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
 };
