@@ -1,6 +1,4 @@
-Here is your **README.md** file with details about the project based on the provided folder structure:
 
----
 
 # User Management System
 
